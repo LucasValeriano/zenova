@@ -1,0 +1,9 @@
+hts-cache/
+hts-log.txt
+*.whtt
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+.vscode/
