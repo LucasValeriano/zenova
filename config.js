@@ -7,7 +7,7 @@
 const CONFIG = {
     // LINKS DO SEU CHECKOUT
     // Você pode usar URLs diferentes para cada plano se desejar.
-    CHECKOUT_BASICO_URL: 'https://pay.hotmart.com/H104318054N?checkoutMode=10', // Troque pelo seu link
+    CHECKOUT_BASICO_URL: 'https://compraseguraonline.org.ua/c/427706ce53', // Link do plano básico (47)
     CHECKOUT_COMPLETO_URL: 'https://compraseguraonline.org.ua/c/e2b6830746', // Link do plano completo (67)
     
     // LINK DA PÁGINA DE VENDAS
