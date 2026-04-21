@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/oferta",
+      "destination": "/descobrindo-o-porque-da-fe",
+      "permanent": true
+    }
+  ]
 }
