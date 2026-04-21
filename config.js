@@ -13,7 +13,7 @@ const CONFIG = {
     
     // LINK DA PÁGINA DE VENDAS
     // Usado pelo Advertorial para levar o usuário à oferta.
-    SALES_PAGE_URL: '../../../zenova%202/zenovaadigital.shop/descobrindo-o-porque-da-fe/index.html',
+    SALES_PAGE_URL: '../descobrindo-o-porque-da-fe/',
 
     /**
      * Função para inicializar seus novos pixels e scripts de rastreamento.
