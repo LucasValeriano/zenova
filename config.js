@@ -23,12 +23,12 @@ const CONFIG = {
         console.log("Config: Inicializando scripts de rastreamento personalizados...");
         
         // --- UTMify ---
-        window.pixelId = "69ab8e0c5a8ba22cf76e7080";
-        var a = document.createElement("script");
-        a.setAttribute("async", "");
-        a.setAttribute("defer", "");
-        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-        document.head.appendChild(a);
+        // window.pixelId = "69ab8e0c5a8ba22cf76e7080";
+        // var a = document.createElement("script");
+        // a.setAttribute("async", "");
+        // a.setAttribute("defer", "");
+        // a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        // document.head.appendChild(a);
 
         // --- Meta Pixel ---
         !function(f,b,e,v,n,t,s)
@@ -39,19 +39,21 @@ const CONFIG = {
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '26069232519364368');
-        fbq('track', 'PageView');
+        if (typeof window.fbq === 'function') {
+            window.fbq('init', '26069232519364368');
+            window.fbq('track', 'PageView');
 
-        // Trackeamento específico detectando os elementos presentes na tela
-        // (Isso corrige falhas caso você esteja acessando via Live Server onde a URL muda)
-        if (document.querySelector('.btn-sales-page')) {
-            // Se encontrou botão para a Sales Page, estamos no Advertorial
-            fbq('trackCustom', 'Advertorial');
-            console.log("Trackeando Pixel Especial: Advertorial");
-        } else if (document.querySelector('.btn-checkout-basico') || document.querySelector('.btn-checkout-completo')) {
-            // Se existe botão de checkout, estamos na Página de Vendas
-            fbq('trackCustom', 'PaginaDeVendas');
-            console.log("Trackeando Pixel Especial: PaginaDeVendas");
+            // Trackeamento específico detectando os elementos presentes na tela
+            // (Isso corrige falhas caso você esteja acessando via Live Server onde a URL muda)
+            if (document.querySelector('.btn-sales-page')) {
+                // Se encontrou botão para a Sales Page, estamos no Advertorial
+                window.fbq('trackCustom', 'Advertorial');
+                console.log("Trackeando Pixel Especial: Advertorial");
+            } else if (document.querySelector('.btn-checkout-basico') || document.querySelector('.btn-checkout-completo')) {
+                // Se existe botão de checkout, estamos na Página de Vendas
+                window.fbq('trackCustom', 'PaginaDeVendas');
+                console.log("Trackeando Pixel Especial: PaginaDeVendas");
+            }
         }
     }
 };
@@ -135,7 +137,7 @@ function applyRedirects() {
             const overlay = document.getElementById('upsellOverlay');
             if (overlay) {
                 showUpsellPopup();
-                if(typeof fbq === 'function') fbq('trackCustom', 'OpenUpsellPopup'); // Evento opcional para tracking
+                if(typeof window.fbq === 'function') window.fbq('trackCustom', 'OpenUpsellPopup'); // Evento opcional para tracking
             } else {
                 window.location.href = CONFIG.CHECKOUT_BASICO_URL; // Fallback
             }
