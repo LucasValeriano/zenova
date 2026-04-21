@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/zenovas/zenovaadigital.shop/adv-01/index.html"
+    },
+    {
+      "source": "/wp-content/(.*)",
+      "destination": "/zenovas/zenovaadigital.shop/wp-content/$1"
+    },
+    {
+      "source": "/wp-includes/(.*)",
+      "destination": "/zenovas/zenovaadigital.shop/wp-includes/$1"
+    }
+  ]
+}

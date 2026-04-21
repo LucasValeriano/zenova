@@ -103,9 +103,9 @@ function injectPopup() {
             <span class="upsell-close" id="upsellClose">&times;</span>
             <div class="upsell-title">ESPERE! 🛑<br>Oferta Única</div>
             <div class="upsell-text">Não leve apenas o básico. Destrave <strong style="color:#0693e3;">TODOS OS BÔNUS</strong> e a jornada completa de 52 semanas com um super desconto exclusivo!</div>
-            <div class="upsell-price">R$ 54,90</div>
+            <div class="upsell-price">R$ 17,00</div>
             <a href="${CONFIG.CHECKOUT_UPSELL_URL}" class="upsell-btn">QUERO O PLANO COMPLETO AGORA!</a>
-            <a href="${CONFIG.CHECKOUT_BASICO_URL}" class="upsell-decline">Não, obrigado. Quero apenas o básico por R$ 47.</a>
+            <a href="${CONFIG.CHECKOUT_BASICO_URL}" class="upsell-decline">Não, obrigado. Quero apenas o básico por R$ 10.</a>
         </div>
     </div>
     `;
