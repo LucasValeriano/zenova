@@ -106,8 +106,8 @@ function injectPopup() {
             <div class="upsell-title">ESPERE! 🛑<br>Oferta Única</div>
             <div class="upsell-text">Não leve apenas o básico. Destrave <strong style="color:#0693e3;">TODOS OS BÔNUS</strong> e a jornada completa de 52 semanas com um super desconto exclusivo!</div>
             <div class="upsell-price">R$ 17,00</div>
-            <a href="${CONFIG.CHECKOUT_UPSELL_URL}" class="upsell-btn">QUERO O PLANO COMPLETO AGORA!</a>
-            <a href="${CONFIG.CHECKOUT_BASICO_URL}" class="upsell-decline">Não, obrigado. Quero apenas o básico por R$ 10.</a>
+            <a href="${CONFIG.CHECKOUT_UPSELL_URL}" class="upsell-btn" onclick="if(typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout');">QUERO O PLANO COMPLETO AGORA!</a>
+            <a href="${CONFIG.CHECKOUT_BASICO_URL}" class="upsell-decline" onclick="if(typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout');">Não, obrigado. Quero apenas o básico por R$ 10.</a>
         </div>
     </div>
     `;
@@ -137,8 +137,12 @@ function applyRedirects() {
             const overlay = document.getElementById('upsellOverlay');
             if (overlay) {
                 showUpsellPopup();
-                if(typeof window.fbq === 'function') window.fbq('trackCustom', 'OpenUpsellPopup'); // Evento opcional para tracking
+                if(typeof window.fbq === 'function') {
+                    window.fbq('trackCustom', 'OpenUpsellPopup'); 
+                    // Nota: O IC real será disparado ao clicar nos botões do popup
+                }
             } else {
+                if(typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout');
                 window.location.href = CONFIG.CHECKOUT_BASICO_URL; // Fallback
             }
         });
@@ -146,6 +150,9 @@ function applyRedirects() {
 
     // Aplica para o Plano Completo
     document.querySelectorAll('.btn-checkout-completo').forEach(el => {
+        el.addEventListener('click', () => {
+            if(typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout');
+        });
         el.href = CONFIG.CHECKOUT_COMPLETO_URL;
     });
 
